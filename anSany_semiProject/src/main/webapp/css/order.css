@@ -193,7 +193,7 @@
     font-size: 15px;
     font-family: ns-m;
 }
-.order-info button:hover, .search-address:hover{
+.order-info button:hover, #search-address:hover{
     cursor: pointer;
     background-color: #000;
     color: #fff;

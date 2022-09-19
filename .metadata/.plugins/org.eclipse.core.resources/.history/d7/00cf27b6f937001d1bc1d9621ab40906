@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AN SANY 장바구니</title>
+<%@include file="/WEB-INF/views/common/header.jsp" %>
+<link rel="stylesheet" href="css/notosans.css">
+<link rel="stylesheet" href="css/cart.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<%@include file="/WEB-INF/views/common/footer.jsp" %>
+</head>
+<body>
+
+</body>
+</html>
