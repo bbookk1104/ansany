@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%
+    <%	//메세지 출력 결과값 받아오기
     	String title = (String)request.getAttribute("title");
     	String msg = (String)request.getAttribute("msg");
     	String icon = (String)request.getAttribute("icon");
@@ -14,7 +14,7 @@
 <script src="/js/sweetalert.min.js"></script>
 </head>
 <body>
-	<div style="display:none;">
+	<div style = "display : none;">
 		<div id="title"><%=title %></div>
 		<div id="msg"><%=msg %></div>
 		<div id="icon"><%=icon %></div>
@@ -26,9 +26,9 @@
 		const icon = document.querySelector("#icon").innerText;
 		const loc = document.querySelector("#loc").innerText;
 		swal({
-			title:title,
-			text:msg,
-			icon:icon
+			title: title,
+			text : msg,
+			icon : icon
 		}).then(function(){
 			location.href = loc;
 		});

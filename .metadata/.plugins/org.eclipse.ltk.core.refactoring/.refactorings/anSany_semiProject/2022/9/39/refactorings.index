@@ -13,3 +13,16 @@
 1663578287804	Delete element
 1663578330901	Delete element
 1663578388933	Delete element
+1663634751853	Move 'index.jsp' to 'main'
+1663634907716	Move 'index.jsp' to 'webapp'
+1663636677848	Delete element
+1663637608806	Copy package
+1663637615456	Delete element
+1663637751151	Rename package 'kr.co.ansany.product.model.vo'
+1663637760286	Rename package 'kr.co.ansany.product.model.dao'
+1663637769564	Rename package 'kr.co.ansany.product.model.service'
+1663637856329	Rename type 'ProductDao'
+1663637863296	Rename type 'ProductService'
+1663637874762	Rename type 'Product'
+1663637895791	Rename resource 'order'
+1663647702679	Rename type 'CartServlet'

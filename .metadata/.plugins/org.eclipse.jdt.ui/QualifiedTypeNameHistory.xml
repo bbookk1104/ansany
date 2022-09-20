@@ -6,7 +6,6 @@
     <fullyQualifiedTypeName name="kr.or.iei.member.model.vo.Member"/>
     <fullyQualifiedTypeName name="kr.or.iei.member.dao.MemberDao"/>
     <fullyQualifiedTypeName name="com.oreilly.servlet.HttpsMessage"/>
-    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
     <fullyQualifiedTypeName name="kr.or.iei.notice.dao.NoticeDao"/>
     <fullyQualifiedTypeName name="kr.or.iei.notice.vo.NoticePageData"/>
@@ -27,12 +26,7 @@
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="kr.or.iei.photo.model.dao.PhotoDao"/>
     <fullyQualifiedTypeName name="kr.or.iei.photo.model.service.PhotoService"/>
-    <fullyQualifiedTypeName name="java.sql.Connection"/>
-    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="kr.or.iei.photo.model.vo.Photo"/>
-    <fullyQualifiedTypeName name="common.JDBCTemplate"/>
     <fullyQualifiedTypeName name="com.google.gson.Gson"/>
     <fullyQualifiedTypeName name="java.lang.StringIndexOutOfBoundsException"/>
     <fullyQualifiedTypeName name="java.util.Properties"/>
@@ -50,4 +44,14 @@
     <fullyQualifiedTypeName name="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"/>
     <fullyQualifiedTypeName name="java.io.PrintWriter"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="kr.co.ansany.cart.model.service.CartService"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="common.JDBCTemplate"/>
+    <fullyQualifiedTypeName name="kr.co.ansany.member.model.vo.Member"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="kr.co.ansany.cart.model.vo.Cart"/>
+    <fullyQualifiedTypeName name="kr.co.ansany.cart.model.dao.CartDao"/>
 </qualifiedTypeNameHistroy>
