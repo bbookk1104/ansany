@@ -94,14 +94,14 @@
 							<%
 							for (Cart c : list) {
 							%>
-							<tr class="basket">
+							<tr>
 								<td class="cart-checkbox">
 									<input type="checkbox" name="select-one" id="cart-product">
 									<label for="cart-product"></label>
 								</td>
 								<td class="cart-img"><img src="/img/WH-XB910N(블랙)_1.png"></td>
 								<td class="cart-name"><span><%=c.getProductName() %></span></td>
-								<td class="cart-price"><span><%=c.getProductPrice() %></span> <span>원</span></td>
+								<td class="cart-price"><input class="cart-price-value" value="<%=c.getProductPrice() %>" readonly><span>원</span></td>
 								<td class="cart-count">
 									<div class="cart-count-wrap">
 										<button type="button" class="cart-count-minus"><span class="material-symbols-outlined">remove</span></button>
@@ -109,7 +109,7 @@
 										<button type="button" class="cart-count-plus"><span class="material-symbols-outlined">add</span></button>
 									</div>
 								</td>
-								<td class="cart-pricesum"><span><%=c.getProductPrice()*c.getOrderQty() %> </span><span>원</span></td>
+								<td class="cart-pricesum"><input class="cart-pricesum-value" value="<%=c.getProductPrice()*c.getOrderQty() %>" readonly><span>원</span></td>
 								<td>
 									<button class="cart-removebtn">
 										<span class="material-symbols-outlined">close</span>
@@ -121,11 +121,13 @@
 						<!-- 결제예정금액 표시 -->
 						<tfoot>
 							<tr>
-								<td colspan="7"><span class="tfoot-span1">결제 예정 금액</span> <span
-									class="tfoot-span1">(총 </span> <span class="tfoot-span1"
-									id="count-sum">1</span><span class="tfoot-span1">개)</span> <span
-									class="tfoot-span2" id="price-sum">10,000,000</span> <span
-									class="tfoot-span2">원</span></td>
+								<td colspan="7">
+								<span class="tfoot-span1">결제 예정 금액</span>
+								<span class="tfoot-span1">(총 </span>
+								<input id="total-count" value="0" readonly>
+								<span class="tfoot-span1">개)</span>
+								<input id="total-price" value="0" readonly class="tfoot-span2">
+								<span class="tfoot-span2">원</span></td>
 							</tr>
 							<tr>
 								<td colspan="7"><span class="tfoot-span3">* 최종 결제금액은 회원등급별 할인율 적용에 따라 달라질 수 있습니다.</span></td>
@@ -149,4 +151,5 @@
 	<!-- content종료 -->
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
+<script src="/js/cart.js"></script>
 </html>
