@@ -15,12 +15,28 @@ selectAll.on("change",function(){
 
 //장바구니 개별선택 시
 selectOne.on("change",function(){
-    if($(this).prop("checked")){
-        if(selectOne.prop("checked")){
-            selectAll.prop("checked",true);
-        }
-    }else{
-        selectAll.prop("checked",false);
+	if($(this).prop("checked")){
+		//선택한 장바구니 input값들은 submit시 전달
+		$(this).siblings().attr("disabled", false);
+		$(this).parent().siblings().find("input").attr("disabled", false);
+		/*
+		$(this).parent().siblings().find("input").each(function(index,item){
+			console.log($(item).val());
+			console.log($(item).attr("disabled"));
+		});
+		*/
+	}else{
+		//선택하지않은 장바구니 input값들은 전달하지않음
+		$(this).siblings().attr("disabled", true);
+		$(this).parent().siblings().find("input").attr("disabled", true);
+		/*
+		$(this).parent().siblings().find("input").each(function(index,item){
+			//$(item).attr("disabled", true);
+			console.log($(item).val());
+			console.log($(item).attr("disabled"));
+		});
+		*/
+		selectAll.prop("checked",false);
     }
     calCheckedCount();
     calCheckedPrice();
@@ -89,7 +105,7 @@ cartCountPlus.on("click",function(){
 });
 
 //수량 입력 시 입력값만큼 변경
-cartCountVal.on("change",function(){
+cartCountVal.on("change",function(e){
     if($(this).val()!=Number($(this).val())){
         //입력값이 숫자가 아니면 1개로 초기화
         $(this).val(1);
@@ -112,9 +128,11 @@ cartCountVal.on("change",function(){
     //변경한 수량과 합계를 총수량, 결제예정금액에 반영
     calCheckedCount();
     calCheckedPrice();
+    
     //계산한 합계에 콤마 추가
     numPriceSum = addComma(numPriceSum);
     cartPriceSum.val(numPriceSum);
+    
 });
 
 //선택목록 수량 계산 함수
@@ -159,7 +177,7 @@ function removeComma(value){
 //장바구니 목록별 삭제 버튼(X) 선언
 const cartRemoveBtn = $(".cart-removebtn");
 //목록별 삭제 버튼 누르면 해당 목록만 삭제
-cartRemoveBtn.on("click",function(){
+cartRemoveBtn.on("click",function(){	
     $(this).parents("tr").remove();
     calCheckedCount();
     calCheckedPrice();
@@ -169,6 +187,7 @@ const selectRemoveBtn = $(".select-removebtn");
 
 //선택삭제 버튼 누르면 선택한 목록 모두 삭제
 selectRemoveBtn.on("click",function(){
+	
     $(".cart-checkbox>input:checked").each(function (index, item) {
         $(item).parents("tr").remove();
         calCheckedCount();
@@ -185,7 +204,6 @@ const cartSelect = $(".cart-select");
 //장바구니 목록 유무에 따른 화면표시 함수
 function viewCartList(){
     const cartTr = $(".cart-table tbody>tr");
-    console.log(cartTr.length);
     //장바구니 목록 있으면 cartTable 및 선택버튼 표시, 없으면 cartEmpty표시
     if(cartTr.length<1){
         cartTable.hide();

@@ -104,7 +104,6 @@
 .cart-empty div:last-of-type>span{
     font-size: 20px;
     font-family: ns-bold;
-    color: rgb(220, 75, 75);
 }
 .btn-wrap.empty{
     margin: 0;
@@ -165,6 +164,9 @@
     left: 0;
     top: -1px;
 }
+#select-all2+label{
+	font-family: ns-m;
+}
 .select-removebtn{
     padding: 10px 0px 10px 0px;
     box-sizing: border-box;
@@ -189,7 +191,7 @@
 }
 
 /* 장바구니 테이블 */
-.cart-table>table{
+.cart-table>form>table{
     width: 100%;
     border-collapse: collapse;
 }
@@ -204,10 +206,21 @@
 .cart-table tbody>tr{
     border-bottom: 1px solid #BBBBBB;
 }
-/* 제품별 체크박스 디자인 바꿈*/
+
+/* 선택하지않은 목록(disabled상태)의 input스타일을 기존과 같은 스타일로 처리*/
+.cart-table tbody>tr input:disabled{
+    background-color: transparent;
+    color: #000;
+}
+.cart-table tbody>tr>.cart-price input:disabled{
+	color: #777777;
+}
+
+/* 기본체크박스, cart-no, product-no, product-img 숨기기*/
 .cart-checkbox>input{
     display: none;
 }
+/* 제품별 체크박스 디자인 바꿈*/
 .cart-checkbox>label{
     display: inline-block;
     width: 15px;
@@ -237,10 +250,11 @@
 .cart-name{
     width: 360px;
 }
-.cart-name>span{
+.cart-name-value{
     margin-left: 20px;
     font-family: ns-bold;
     font-size: 17px;
+    border: none;
 }
 .cart-price, .cart-pricesum{
     width: 150px;

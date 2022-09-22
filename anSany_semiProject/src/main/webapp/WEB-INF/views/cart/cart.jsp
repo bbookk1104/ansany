@@ -49,8 +49,7 @@
 						<p>주문 완료</p>
 					</div>
 				</div>
-				<% if(list.isEmpty()){%>
-				<!-- 장바구니 목록 없는 경우 -->
+				<!-- 장바구니 목록 없는 경우 cart-empty표시-->
 				<div class="cart-empty">
 					<table>
 						<tr>
@@ -66,7 +65,6 @@
 							하기</button>
 					</div>
 				</div>
-				<%} else{%>
 				<!-- 장바구니 전체선택/선택삭제 버튼 -->
 				<div class="cart-select">
 					<div class="selectbox">
@@ -80,6 +78,7 @@
 				</div>
 				<!-- 장바구니 목록 -->
 				<div class="cart-table">
+				<form action="/order.do" method="post" onsubmit="changeBtn();">
 					<table>
 						<thead>
 							<tr>
@@ -92,26 +91,40 @@
 						</thead>
 						<tbody>
 							<%
-							for (Cart c : list) {
+							int i = 0;
+				            for (;i < list.size(); i++) {
 							%>
 							<tr>
 								<td class="cart-checkbox">
-									<input type="checkbox" name="select-one" id="cart-product">
-									<label for="cart-product"></label>
+									<input class="cart-no" name="cart-no" value="<%=list.get(i).getCartNo() %>">
+									<input class="product-no" name="product-no" value="<%=list.get(i).getProductNo() %>">
+									<input class="product-img" name="product-img" value="<%=list.get(i).getProductImg() %>">
+									<input type="checkbox" name="select-one" id="cart-product<%=list.get(i)%>">
+									<label for="cart-product<%=list.get(i)%>"></label>
 								</td>
-								<td class="cart-img"><img src="/img/WH-XB910N(블랙)_1.png"></td>
-								<td class="cart-name"><span><%=c.getProductName() %></span></td>
-								<td class="cart-price"><input class="cart-price-value" value="<%=c.getProductPrice() %>" readonly><span>원</span></td>
+								<td class="cart-img">
+									<img src="/img/WH-XB910N(블랙)_1.png">
+								</td>
+								<td class="cart-name">
+									<input type="text" class="cart-name-value" name="cart-name" value="<%=list.get(i).getProductName() %>" readonly>
+								</td>
+								<td class="cart-price">
+									<input class="cart-price-value" name="cart-price" value="<%=list.get(i).getProductPrice() %>" readonly>
+									<span>원</span>
+								</td>
 								<td class="cart-count">
 									<div class="cart-count-wrap">
 										<button type="button" class="cart-count-minus"><span class="material-symbols-outlined">remove</span></button>
-										<input type="text" class="cart-count-value" name="cart-count" value="<%=c.getOrderQty() %>">
+										<input type="text" class="cart-count-value" name="cart-count" value="<%=list.get(i).getOrderQty() %>">
 										<button type="button" class="cart-count-plus"><span class="material-symbols-outlined">add</span></button>
 									</div>
 								</td>
-								<td class="cart-pricesum"><input class="cart-pricesum-value" value="<%=c.getProductPrice()*c.getOrderQty() %>" readonly><span>원</span></td>
+								<td class="cart-pricesum">
+									<input class="cart-pricesum-value" name="cart-pricesum" value="<%=list.get(i).getProductPrice()*list.get(i).getOrderQty() %>" readonly>
+									<span>원</span>
+								</td>
 								<td>
-									<button class="cart-removebtn">
+									<button type="button" class="cart-removebtn">
 										<span class="material-symbols-outlined">close</span>
 									</button>
 								</td>
@@ -138,11 +151,11 @@
 					<div class="btn-wrap buy">
 						<button type="button" onclick="location.href='#'">쇼핑 계속
 							하기</button>
-						<button type="button" onclick="location.href='/order.html'">구매하기</button>
+						<button type="button" id="orderDo">구매하기</button>
 					</div>
+					</form>
 				</div>
 				<!-- cart-table종료 -->
-				<%} %>
 			</div>
 			<!-- cart-content종료(width:1200px) -->
 		</div>
@@ -152,4 +165,36 @@
 	<%@include file="/WEB-INF/views/common/footer.jsp"%>
 </body>
 <script src="/js/cart.js"></script>
+<script>
+	function changeBtn(){
+		$("#orderDo").attr("type", "button");
+	}
+
+	$("#orderDo").click(function () {
+	    $("#orderDo").attr("type", "submit");
+	});
+	
+	$("#select-removebtn").on("click",function(){
+		//선택된 목록과 카트번호 가져오기
+		let selected = $(".cart-checkbox>input:checked");
+		let selCartNo = selected.siblings(".cart-no").val();
+		$.ajax({
+			url: "/cartDelete.do",
+			type: "get",
+			data: {selCartNo:selCartNo},
+			dataType: "json", //객체쓰려면 json타입인걸 명시해야함(함수에서 하거나 서블릿에서 하거나)
+			success: function(data){//data가 아닌 다른 변수명이어도 상관없음
+				
+				if(data == null){
+					result.append("회원 정보를 조회할 수 없습니다.")
+				}else{
+					result.append("아이디 : "+data.memberId+"<br>");
+					result.append("이름 : "+data.memberName+"<br>");
+					result.append("전화번호 : "+data.memberPhone+"<br>");
+					result.append("주소 : "+data.memberAddr+"<br>");
+				}
+			}
+		});
+	});
+</script>
 </html>
