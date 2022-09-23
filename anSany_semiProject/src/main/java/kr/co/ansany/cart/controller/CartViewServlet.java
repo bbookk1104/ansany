@@ -39,7 +39,9 @@ public class CartViewServlet extends HttpServlet {
 		// 인코딩
 		request.setCharacterEncoding("utf-8");
 		// 값추출
-		//int cartNo = request
+		HttpSession session = request.getSession(false);
+		Member m = (Member)session.getAttribute("m");
+		String memberId = m.getMemberId();
 		// 비즈니스 로직
 		CartService service = new CartService();
 		ArrayList<Cart> list = service.selectAllCart(memberId);
